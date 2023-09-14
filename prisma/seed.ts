@@ -2,7 +2,6 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  await prisma.prompt.deleteMany();
 
   await prisma.prompt.create({
     data: {
@@ -59,11 +58,9 @@ Transcrição:
 }
 
 main()
-  .then(async () => {
-    await prisma.$disconnect();
+  .catch((e) => {
+    throw e;
   })
-  .catch(async (e) => {
-    console.error(e);
+  .finally(async () => {
     await prisma.$disconnect();
-    process.exit(1);
   });
