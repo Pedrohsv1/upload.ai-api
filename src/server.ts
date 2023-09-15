@@ -5,6 +5,7 @@ import { createTranscriptionRoute } from "./routes/create-transcription";
 import { generateAICompletion } from "./routes/generate-ai-completion";
 import fastifyCors from "@fastify/cors";
 import "dotenv/config";
+import { getAllVideosRoute } from "./routes/get-all-videos";
 
 const app = fastify();
 
@@ -20,6 +21,7 @@ app.register(getAllPromptsRoute);
 app.register(uploadVideoRoute);
 app.register(createTranscriptionRoute);
 app.register(generateAICompletion);
+app.register(getAllVideosRoute);
 
 app
   .listen({
